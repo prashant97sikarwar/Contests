@@ -1,6 +1,6 @@
 from sys import *
 t = int(stdin.readline())
-while t > 0:
+for i in range(t):
     n = int(stdin.readline())
     arr = list(map(int,stdin.readline().split()))
     l = []
@@ -15,4 +15,3 @@ while t > 0:
         if arr[i] > l[-1]:
             total += mn
     print(total)
-    t -= 1

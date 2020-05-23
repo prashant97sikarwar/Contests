@@ -1,6 +1,6 @@
 from sys import *
 t = int(stdin.readline())
-while t > 0:
+for i in range(t):
     s = stdin.readline()
     l = 0
     r = 0
@@ -15,5 +15,4 @@ while t > 0:
         elif r > l:
             break
     print(con*2)
-    t -= 1
             
