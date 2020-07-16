@@ -12,3 +12,4 @@ while t > 0:
             de = 0
         de += 1
     print(count)
+    t -= 1
