@@ -10,8 +10,8 @@ def Serialize(root,arr):
         return
     else:
         arr.append(root.data)
-        Serialize(root.left)
-        Serialize(root.right)
+        Serialize(root.left,arr)
+        Serialize(root.right,arr)
         
 def Deserialize(arr):
     index = 0
