@@ -1,29 +1,46 @@
-class Node:
-    def __init__(self,data):
-        self.data = data
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
         self.left = None
         self.right = None
-        
-def Serialize(root,arr):
-    if root is None:
-        arr.append(-1)
-        return
-    else:
-        arr.append(root.data)
-        Serialize(root.left,arr)
-        Serialize(root.right,arr)
-        
-def Deserialize(arr):
-    index = 0
-    if index == len(arr):
-        return None
-    val = arr[index]
-    index += 1
-    if arr[index] == -1:
-        return None
-    node = Node(val)
-    node.left = Deserialize(arr)
-    node.right = Deserialize(arr)
-    return node
+
+
+
+class Codec:
+    def serialhelp(self,root,path):
+        if root is None:
+            path.append("None")
+            return
+        else:
+            path.append(str(root.val))
+            self.serialhelp(root.left,path)
+            self.serialhelp(root.right,path)
+            
+    def help2(self,data):
+        if data[0] == "None":
+            data.pop(0)
+            return
+        else:
+            node = TreeNode(data[0])
+            data.pop(0)
+            node.left = self.help2(data)
+            node.right = self.help2(data)
+        return node
     
-    
+    def serialize(self, root):
+        path = []
+        if root is None:
+            return []
+        else:
+            self.serialhelp(root,path)
+            path = ','.join(path)
+        return path
+        
+
+    def deserialize(self, data):
+        if not data:
+            return
+        else:
+            data = data.split(',')
+            return self.help2(data)
+            
